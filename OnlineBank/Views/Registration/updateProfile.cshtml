@@ -1,0 +1,72 @@
+﻿@model OnlineBank.Models.Registration;
+
+
+
+@{
+    ViewBag.Title = "Update Profile";
+}
+
+<h1>@ViewBag.Message</h1>
+<hr />
+<div class="container">
+    <div class="leftdiv">
+        @using (Html.BeginForm("updateProfile", "Registration", FormMethod.Post))
+        {
+            <div class="row">
+                @Html.HiddenFor(m => m.ID)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Name, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+
+            <div class="row">
+                @Html.LabelFor(m => m.Contact_No, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Contact_No)
+                @Html.ValidationMessageFor(m => m.Contact_No)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Email, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Password, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div style=" margin-top: 2rem; margin-left: -0.8rem; float: left;">
+                <button class="btn" type="submit">Update Profile</button>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+
+    .lbl {
+        display: block;
+        width: 100%;
+    }
+
+    .btn {
+        background: black;
+        color: white;
+        border: none;
+    }
+
+    .field-validation-error {
+        color: Red;
+    }
+
+    .leftdiv {
+        width: 50%;
+        float: left;
+    }
+
+    .rightdiv {
+        width: 50%;
+        float: right;
+    }
+</style>

@@ -1,0 +1,62 @@
+﻿@model OnlineBank.Models.Registration;
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h1>@ViewBag.Message</h1>
+<hr />
+
+<div class="container">
+    <div class="leftdiv">
+        @using (Html.BeginForm("Login", "Registration", FormMethod.Post))
+        {
+
+            <div class="row">
+                <label for="StudentName" class="lbl">Phone No</label>
+                @*@Html.LabelFor(m => m.Contact_No, new { @class = "lbl" })*@
+                @Html.TextBoxFor(m => m.Contact_No)
+                @Html.ValidationMessageFor(m => m.Contact_No)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Password, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div style="margin-top: 2rem;margin-left: -0.8rem;">
+                <button class="btn" type="submit">Submit</button>
+            </div>
+            <div style="margin-top: 2rem;margin-left: -0.8rem;">
+                @Html.ActionLink("Self Registration", "Registration", "Registration", null, new { style = "" })
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+
+    .lbl {
+        display: block;
+        width: 100%;
+    }
+
+    .btn {
+        background: black;
+        color: white;
+        border: none;
+    }
+
+    .field-validation-error {
+        color: Red;
+    }
+
+    .leftdiv {
+        width: 50%;
+        float: left;
+    }
+
+    .rightdiv {
+        width: 50%;
+        float: right;
+    }
+</style>

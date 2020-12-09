@@ -1,0 +1,73 @@
+﻿@model OnlineBank.Models.Benficiarys;
+
+
+
+@{
+    ViewBag.Title = "Benficiary Add";
+}
+
+<h1>Add Update </h1>
+<hr />
+
+<div class="container">
+    <div class="leftdiv">
+        @using (Html.BeginForm("PayeeUpdate", "Home", FormMethod.Post))
+        {
+            <div class="row">
+                @Html.LabelFor(m => m.Payee_Name, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Payee_Name)
+                @Html.ValidationMessageFor(m => m.Payee_Name)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Payee_Contact, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Payee_Contact)
+                @Html.ValidationMessageFor(m => m.Payee_Contact)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Bnak_name, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Bnak_name)
+                @Html.ValidationMessageFor(m => m.Bnak_name)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Customer, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Customer)
+                @Html.ValidationMessageFor(m => m.Customer)
+            </div>
+
+            <div style=" margin-top: 2rem; margin-left: -0.8rem; float: left;">
+                <button class="btn" type="submit">Update</button>
+            </div>
+            <div style=" margin-top: 2rem; margin-left: 33px; float: left;">
+                <button class="btn" onclick="location.href='@Url.Action("Payees")';return false;">Cancel</button>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+
+    .lbl {
+        display: block;
+        width: 100%;
+    }
+
+    .btn {
+        background: black;
+        color: white;
+        border: none;
+    }
+
+    .field-validation-error {
+        color: Red;
+    }
+
+    .leftdiv {
+        width: 50%;
+        float: left;
+    }
+
+    .rightdiv {
+        width: 50%;
+        float: right;
+    }
+</style>

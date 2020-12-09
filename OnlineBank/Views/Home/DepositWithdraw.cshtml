@@ -1,0 +1,96 @@
+﻿@model OnlineBank.Models.PaymentHistory;
+..
+@{
+    ViewBag.Title = "Deposit Withdraw";
+}
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "withdraw",
+        Value = "1"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Deposit",
+        Value = "2",
+        Selected = true
+    });
+    
+}
+
+<h1>Deposit Withdraw</h1>
+<hr />
+
+<div class="container">
+    <div class="leftdiv">
+        @using (Html.BeginForm("DepositWithdrawSubmit", "Home", FormMethod.Post))
+        {
+            <div class="row">
+                @Html.LabelFor(m => m.Name, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Phone, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Phone)
+                @Html.ValidationMessageFor(m => m.Phone)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Email, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="row">
+                @Html.LabelFor(m => m.Amount, new { @class = "lbl" })
+                @Html.TextBoxFor(m => m.Amount)
+                @Html.ValidationMessageFor(m => m.Amount)
+            </div>
+
+            <div class="row">
+                @Html.LabelFor(m => m.Mode, new { @class = "lbl" })
+                @*@Html.DropDownList("DDlDemo", new SelectList(listItems, "Value", "Text"))*@
+                <select asp-for="Mode" class="form-control" style="width:32% !important" asp-items="@(new SelectList(listItems,"Text", "Text"))">
+                </select>
+            </div>
+
+            <div class="row">
+                @Html.HiddenFor(m => m.customerID)
+            </div>
+            <div style=" margin-top: 2rem; margin-left: -0.8rem; float: left;">
+                <button class="btn" type="submit">Pay</button>
+            </div>
+            <div style=" margin-top: 2rem; margin-left: 33px; float: left;">
+                <button class="btn" onclick="location.href='@Url.Action("customer")';return false;">Cancel</button>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+
+    .lbl {
+        display: block;
+        width: 100%;
+    }
+
+    .btn {
+        background: black;
+        color: white;
+        border: none;
+    }
+
+    .field-validation-error {
+        color: Red;
+    }
+
+    .leftdiv {
+        width: 50%;
+        float: left;
+    }
+
+    .rightdiv {
+        width: 50%;
+        float: right;
+    }
+</style>

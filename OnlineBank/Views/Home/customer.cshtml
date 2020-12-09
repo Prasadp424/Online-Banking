@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Contact Page";
+    @model IEnumerable<OnlineBank.Models.Registration>
+}
+
+<h1>Customer list</h1>
+<hr />
+
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Contact_No</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var d in Model)
+    {
+<tr>
+    <td>@d.Name</td>
+    <td>@d.Contact_No</td>
+    <td>@d.Email </td>
+    <td>@Html.ActionLink("Deposit/Withdraw", "DepositWithdraw", "Home", new { id = d.ID })</td>
+    <td>@Html.ActionLink("Delete", "customerDelete", "Home", new { id = d.ID })</td>
+</tr>
+    }
+</table>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .addTrip {
+        margin-top: 2rem;
+        color: blue;
+        cursor: pointer;
+    }
+</style>

@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Payment History";
+    @model IEnumerable<OnlineBank.Models.PaymentHistory>
+}
+
+<h1>Payment History </h1>
+<hr />
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Mode</th>
+        <th>Amount</th>
+    </tr>
+
+    @foreach (var d in Model)
+    {
+<tr>
+    <td>@d.Name</td>
+    <td>@d.Phone</td>
+    <td>@d.Mode</td>
+    <td>@d.Amount </td>
+</tr>
+    }
+</table>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .addTrip {
+        margin-top: 2rem;
+        color: blue;
+        cursor: pointer;
+    }
+</style>

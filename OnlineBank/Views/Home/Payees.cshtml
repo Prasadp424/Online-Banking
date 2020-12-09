@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Contact Page";
+    @model IEnumerable<OnlineBank.Models.Benficiarys>
+}
+
+<h1>Payee List </h1>
+<hr />
+
+<label class="addTrip" onclick="location.href='@Url.Action("PayeeAdd")';return false;"> Add Payee </label>
+
+<table style="width:100%">
+    <tr>
+        <th>Payee Name</th>
+        <th>Bank Name</th>
+        <th>Contact</th>
+        <th>Update</th>
+        <th>Pay money</th>
+    </tr>
+
+    @foreach (var d in Model)
+    {
+<tr>
+    <td>@d.Payee_Name</td>
+    <td>@d.Bnak_name</td>
+    <td>@d.Payee_Contact </td>
+    <td>@Html.ActionLink("Update", "PayeeUpdate", "Home", new { id = d.ID })</td>
+    <td>@Html.ActionLink("Pay", "paymentPay", "Home", new { id = d.ID })</td>
+</tr>
+    }
+</table>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .addTrip {
+        margin-top: 2rem;
+        color: blue;
+        cursor: pointer;
+    }
+</style>
